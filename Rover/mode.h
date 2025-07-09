@@ -636,7 +636,7 @@ class ModeLoiter : public Mode
 public:
 
     Number mode_number() const override { return Number::LOITER; }
-    const char *name4() const override { return "LOIT"; }
+    const char *name4() const override { return "POSH"; } // Changed to represent position_hold mode
 
     // methods that affect movement of the vehicle in this mode
     void update() override;
@@ -658,6 +658,12 @@ public:
 protected:
 
     bool _enter() override;
+    float _distance_to_destination;
+
+    int32_t _desired_yaw_cd;        // yaw we want to maintain or update
+    int32_t _last_pilot_heading;    // yaw heading to hold when yaw input is zero
+
+    // float _input_threshold = 5.0f;   // threshold for stick neutrality, may be needed to calibrate later
 
     Location _destination;      // target location to hold position around
     float _desired_speed;       // desired speed (ramped down from initial speed to zero)

@@ -63,14 +63,14 @@ public:
     // child classes should override these methods
     virtual bool init(bool ignore_checks) { return true; }
     virtual void run() = 0;
-    virtual bool requires_GPS() const = 0;
-    virtual bool requires_altitude() const = 0;
+    virtual bool requires_GPS() const = 0; // Does not exist
+    virtual bool requires_altitude() const = 0; // Does not exist
     virtual bool allows_arming(bool from_gcs) const = 0;
-    virtual bool is_autopilot() const { return false; }
-    virtual bool in_guided_mode() const { return false; }
+    virtual bool is_autopilot() const { return false; } // is_autopilot_mode()
+    virtual bool in_guided_mode() const { return false; } // in_guided_mode()
 
     // return a string for this flightmode
-    virtual const char *name() const = 0;
+    virtual const char *name() const = 0; // Does not exist
     virtual const char *name4() const = 0;
 
     // returns a unique number specific to this mode
